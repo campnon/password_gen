@@ -6,8 +6,10 @@ class Pass_Gen:
     pass
 
   def Make_Random_Pass(self, reach, char_sets):
-    self.reach = reach
-    self.char = char_sets
+    try:
+      self.reach = int(reach)
+      self.char = int(char_sets)
+    except: return Exception("One of the input was not a number, please try again")
     stri = self.Pass_Options()
     if stri is False:
       return Exception("There was a problem with your settings please try again.")
@@ -28,4 +30,4 @@ class Pass_Gen:
 if __name__ == '__main__':
   length = input("Please enter the Length of your Password: ")
   char_sets = input("Enter 1 for Letter, 2 for Letters and Numbers, Enter 3 for Letters, Numbers, And special characters") 
-  print(Pass_Gen().Make_Random_Pass(int(length), int(char_sets)))
+  print(Pass_Gen().Make_Random_Pass(length, char_sets))
